@@ -1,0 +1,79 @@
+<div class="container fluid d-flex w-75 nav11">
+    <span class="  mt-1 fs-5 fw-bold ">SORT BY : </span>
+    <ul class="nav w-75 m-auto justify-content-around cursor">
+        <li class="nav-item ">
+            <a class="nav-link text-dark" aria-current="page">Popular</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link text-dark"  [ngClass]="borderSelected =='rating' ? 'bottomBorder' : ''" (click)="sortHotels('rating')">User Rating <span class="text-muted">(Highest First)</span></a>
+        </li>
+        <li class="nav-item ">
+            <a class=" nav-link text-dark" [ngClass]="borderSelected =='price_high' ? 'bottomBorder' : ''"  (click)="sortHotels('price_high')"  >Price <span class="text-muted">(Highest First)</span></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link text-dark"  [ngClass]="borderSelected =='price_low' ? 'bottomBorder' : ''"  (click)="sortHotels('price_low')" >Price <span class="text-muted">(Lowest First)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">
+                <form class="d-flex justify-content-around" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  </form>
+            </a>
+        </li>
+      </ul>
+
+</div>
+<br>
+<!-- <div class="container-fluid w-75 nav11">
+    <nav class="navbar navbar-expand-lg w-75 m-auto justify-content-around">
+        <div class="container-fluid">
+          <a class="navbar-brand mt-1 fs-5 fw-bold" href="#">SORT BY: </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          </button>
+          <div class="collapse navbar-collapse w-75 m-auto justify-content-around" id="navbarNavAltMarkup">
+            <div class="navbar-nav ">
+              <a class="nav-link active" aria-current="page" href="#">Popular</a>
+              <a class="nav-link" href="#">User Pating <span class="text-muted">(Highest First)</span></a>
+              <a class="nav-link" href="#">Price <span class="text-muted">(Highest First)</span></a>
+              <a class="nav-link" href="#">Price <span class="text-muted">(Lowest First)</span></a>
+              <form class="" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              </form>
+        
+            </div>
+          </div>
+        </div>
+      </nav>
+</div> -->
+
+<div class="container  mt-2 cursor">
+    <div class="row">
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-7" >
+            <div class=" d-flex border border-dark p-1 mb-1" *ngFor="let item of hotelList">
+
+            <div class="image-container ">
+                <img [src]="item.media[0].url" alt="">
+            </div>
+            <div class=" w-75 p-2">
+                <h5 class="mb-0 fw-bold">{{item.name}}</h5>
+                <p> <span class="mt-0 text-info">{{ item.locationPersuasion[0] }} </span> | <span class="text-muted">{{ item.locationPersuasion[1] }}</span>
+                </p>
+                <p class="msg">Prime locations with delicious breakfast</p>
+            </div>
+            <div class="border-left border-info m-1 p-1 mt-0 border text-end customwidth11 ">
+                <h6 class="mb-0">{{ item?.reviewSummary?.ratingText }}<span class="m-1 badge text-bg-primary px-2 fs-6">{{item?.reviewSummary?.cumulativeRating}}</span> </h6>
+                <p class="text-muted pe-1">({{item.reviewSummary?.totalRatingCount}} ratings)</p>
+                <p class="mb-0 text-decoration-line-through text-muted">₹{{item?.priceDetail?.discountedPriceWithTax}}</p>
+                <h4 class="mb-0 fs-bold fw-5">₹ {{item?.priceDetail?.discountedPrice}}</h4>
+                <p class=" m-0 mb-0 text-muted">+ ₹ {{item?.priceDetail?.totalTax}} taxes & fees </p>
+                <p class="mt-0 text-muted">Per Night </p>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+</div>
+

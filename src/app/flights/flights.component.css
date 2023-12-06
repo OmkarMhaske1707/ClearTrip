@@ -1,0 +1,14 @@
+.cursor{
+    cursor: pointer;
+}
+
+.bold11{
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+.underline-color{
+    border-bottom: 6px solid rgb(74, 18, 206);
+    color: rgb(74, 18, 206) ;
+}

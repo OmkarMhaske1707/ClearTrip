@@ -1,0 +1,50 @@
+
+<div class="container border rounded ">
+    <div class="row ms-2">
+        <h2 class="mb-1">Search <span class="underline-color"> Hotels</span></h2>
+        <p class="fs-bold">Enjoy hassle free bookings with MakeMyTrip</p>
+    </div>
+    <div class="row border border-primary m-2 p-2 rounded">
+        <div class="col-md-4 ">
+            <div class="mb-3">
+                <label for="fromlocation" class="form-label bold bold11">City </label>
+                <input type="text" placeholder="Pune" class="form-control" id="from" name="city" [(ngModel)]="city">
+            </div>
+        </div>
+        <!-- <div class="col-md-3  ">
+           <div class="mb-3">
+            <label for="tolocation" class="form-label bold11">To </label>
+            <input type="text" placeholder="Delhi" class="form-control" id="tp" >
+           </div>
+        </div> -->
+        <div class="col-md-4  ">
+                <label for="dep" class="form-label bold11">Check-in & Check-out</label>
+              <div class="col-xs-12 col-12 col-md-10 form-group">
+                <input type="text" placeholder="select range" class="form-control" name="date" [(ngModel)]="selectedDate" (ngModelChange)="daterange()" bsDaterangepicker>
+              </div>
+        </div>
+        <div class="col-md-4 ">
+                <label for="trevel" class="form-label bold11">Travallers & Class</label>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle border" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        1 Room , 2 Adult
+                    </button>
+                    <ul class="dropdown-menu">
+
+                      <li><a class="dropdown-item"  *ngFor="let opt of roomsArr;" (click)="selectedRooms(opt)">{{opt}}</a></li>
+                      <!-- <li><a class="dropdown-item" >1 Room , 2 Adult</a></li> -->
+                      <!-- <li><a class="dropdown-item" >2 Room , 4 Adult</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary px-4 rounded-pill text-uppercase fs-5" routerLink="/hotels/hotel-list"
+                 [queryParams]="{city:city ,checkin:checkInDate ,checkout:checkOutDate ,room:rooms}" (click)="searchHotel()">Search Hotel</button> 
+                <!-- (click)="searchHotel()" -->
+            </div>
+    </div>
+</div>
+
+
+
+
