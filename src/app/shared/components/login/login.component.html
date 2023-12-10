@@ -1,0 +1,22 @@
+
+<div class="container-fluid">
+    <form [formGroup]="loginForm" (ngSubmit)="loginData()">
+        <div class="mb-3">
+          <label for="id1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="id1" aria-describedby="emailHelp" formControlName="email">
+        </div>
+        <div class="mb-3">
+          <label for="id2" class="form-label">Password</label>
+          <input type="password" class="form-control" id="id2" formControlName="password">
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit">LOGIN</button>
+        </div>
+        <div class="text-center mt-2 cursor">
+          <button class="btn border" type="button" (click)="navigateTosignup()"> <h5>Sign up <span class="text-warning"> OR </span>  Create an Account</h5>
+        </button>
+        </div>
+
+</form>
+
+</div>

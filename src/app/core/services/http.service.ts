@@ -24,9 +24,15 @@ export class HttpService {
     
   }
 
-   getData(endPoint:string){
+   getData(endPoint:string,httpParams:HttpParams){
     const url = this.baseurl + endPoint;
-   return this.http.get(url,{headers:this.httpHeader});
+   return this.http.get(url,{headers:this.httpHeader,params:httpParams});
+
+   }
+
+   postData(endPoint:string,body:any){
+    const url = this.baseurl + endPoint;
+   return this.http.post(url,body,{headers:this.httpHeader});
 
    }
 } 

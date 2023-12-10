@@ -1,8 +1,9 @@
 <div class="container fluid d-flex w-75 nav11">
-    <span class="  mt-1 fs-5 fw-bold ">SORT BY : </span>
-    <ul class="nav w-75 m-auto justify-content-around cursor">
+
+    <ul class="nav w-100 m-auto justify-content-around cursor">
+        <span class="  mt-2 fs-5 fw-bold ">SORT BY : </span>
         <li class="nav-item ">
-            <a class="nav-link text-dark" aria-current="page">Popular</a>
+            <a class="nav-link text-dark"  [ngClass]="borderSelected =='popular' ? 'bottomBorder' : ''" (click)="sortHotels('popular')" aria-current="page">Popular</a>
         </li>
         <li class="nav-item ">
             <a class="nav-link text-dark"  [ngClass]="borderSelected =='rating' ? 'bottomBorder' : ''" (click)="sortHotels('rating')">User Rating <span class="text-muted">(Highest First)</span></a>
@@ -24,14 +25,15 @@
 
 </div>
 <br>
-<!-- <div class="container-fluid w-75 nav11">
-    <nav class="navbar navbar-expand-lg w-75 m-auto justify-content-around">
+<!-- 
+ <div class="container-fluid w-75 nav11">
+    <nav class="navbar navbar-expand-lg w-100 m-auto justify-content-around">
         <div class="container-fluid">
           <a class="navbar-brand mt-1 fs-5 fw-bold" href="#">SORT BY: </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           </button>
-          <div class="collapse navbar-collapse w-75 m-auto justify-content-around" id="navbarNavAltMarkup">
-            <div class="navbar-nav ">
+          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav w-100 m-auto justify-content-around">
               <a class="nav-link active" aria-current="page" href="#">Popular</a>
               <a class="nav-link" href="#">User Pating <span class="text-muted">(Highest First)</span></a>
               <a class="nav-link" href="#">Price <span class="text-muted">(Highest First)</span></a>
@@ -44,15 +46,15 @@
           </div>
         </div>
       </nav>
-</div> -->
-
+</div> 
+ -->
 <div class="container  mt-2 cursor">
     <div class="row">
         <div class="col-md-4">
-            
+            <app-hotel-filter (emitFilterObj)="getFilterCriteria($event)"></app-hotel-filter>
         </div>
-        <div class="col-md-7" >
-            <div class=" d-flex border border-dark p-1 mb-1" *ngFor="let item of hotelList">
+        <div class="col-md-7" *ngIf="hotelList.length > 0">
+            <div class=" d-flex border border-dark p-1 mb-1 cursor" *ngFor="let item of hotelList" (click)="selectHotel(item.id)">
 
             <div class="image-container ">
                 <img [src]="item.media[0].url" alt="">
@@ -71,9 +73,14 @@
                 <p class=" m-0 mb-0 text-muted">+ ₹ {{item?.priceDetail?.totalTax}} taxes & fees </p>
                 <p class="mt-0 text-muted">Per Night </p>
             </div>
-        </div>
-            
-        </div>
-    </div>
+            </div>
+        </div>  
+        
+        <div class="col-md-7 " *ngIf="hotelList.length == 0">
+          <div class="alert alert-warning" role="alert">
+            No Hotel Found... !!
+            </div>
+        </div>   
+     </div>
 </div>
-
+ 

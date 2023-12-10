@@ -2,10 +2,10 @@
     <div class="d-flex ">
         <div class="p-2 flex-grow-1  m-1 ms-5 logotext">Make<span class="text-danger">My</span>Trip</div>
             <div class="p-2  m-1  ">
-                <button type="button" class="btn btn-primary px-4">Login</button> 
+                <button type="button" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button> 
             </div>
             <div class="p-2  m-1 me-5 ">
-                <button type="button" class="btn btn-primary px-4">SignUp</button> 
+                <button type="button" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#exampleModal11">SignUp</button> 
             </div>
     </div><div class="container w-75 mt-2 p-2 shadow">
         <nav class="navbar navbar-expand-sm bg-body-tertiary">
@@ -69,4 +69,57 @@
           </nav>
     </div>
 
+</div>
+
+
+
+
+<!-- Modal for login functionality-->
+ 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold center" id="exampleModalLabel">{{selectedAction}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-login *ngIf="selectedAction != 'SIGN-UP'"   (emitAction)="getAction($event)"></app-login>
+        <app-sign-up *ngIf="selectedAction == 'SIGN-UP'" (emitActionLogin)="getAction($event)"></app-sign-up>
+
+      </div>
+      <!-- <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal for Signup functionality-->
+ 
+ <div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold text-center" id="exampleModalLabel">Sign up</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-sign-up ></app-sign-up>
+        <!-- <app-sign-up *ngIf="selectedAction == 'SIGN-UP'" (emitActionLogin)="getAction($event)"></app-sign-up> -->
+         <!-- <app-login *ngIf="selectedAction != 'SIGN-UP'"   (emitAction)="getAction($event)"></app-login> -->
+
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+     </div>
+    </div>
 </div>
