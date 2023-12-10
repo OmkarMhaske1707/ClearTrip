@@ -1,0 +1,29 @@
+
+<div class="container border ms-2 mt-1">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="fw-bold mb-4">Select Filters</h4>
+            <h6 class="fw-bold mt-3">Suggested  For You</h6>
+            <div class=" user-rating" *ngIf="filterObj.rating != undefined">
+                <h6>User Rating</h6>
+                <div class="form-check" *ngFor="let item of filterObj.rating;let i=index">
+                    <input class="form-check-input" type="checkbox" value="" id="id1" name="rating+{{i}}" [(ngModel)]="item.isSelected" (ngModelChange)="emitData(item)">
+                    <label class="form-check-label" for="id1">
+                       {{item.name}}: {{item.filterValue}}
+                    </label>
+                  </div>
+                  
+            </div>
+            <div class="price-per-night mt-4" *ngIf="filterObj.pricePerNight != undefined">
+                <h6>Price per night</h6>
+                <div class="form-check" *ngFor="let item of filterObj.pricePerNight;let i=index">
+                    <input class="form-check-input" type="checkbox" value="" id="id2" name="price+{{i}}" [(ngModel)]="item.isSelected" (ngModelChange)="emitData(item)">
+                    <label class="form-check-label" for="id2">
+                      <span class="ms-2">₹ {{item.rangeFilter.min}} - ₹ {{item.rangeFilter.max}}</span>
+                    </label>
+                  </div>
+                  
+            </div>
+        </div>
+    </div>
+</div>

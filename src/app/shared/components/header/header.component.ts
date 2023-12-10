@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  selectedAction:string ="Login";
+  getAction(action:any){
+
+    this.selectedAction = action;
+  }
+
+  
 }

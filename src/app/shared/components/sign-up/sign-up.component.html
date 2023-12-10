@@ -1,0 +1,40 @@
+
+<div class="container-fluid">
+    <form [formGroup]="signupForm" (ngSubmit)="signupClickData()">
+        <div class="mb-3">
+            <label for="id2" class="form-label">User Name:</label>
+            <input type="text" class="form-control" id="id1" formControlName="username">
+          </div>
+        <div class="mb-3">
+          <label for="id2" class="form-label">Email address:</label>
+          <input type="email" class="form-control" id="id2" formControlName="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="id2" class="form-label">Mobile No:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="eg.9850065221" formControlName="mobileno" >
+                <button *ngIf="!displayVerifyFlag && !signupForm.get('otpVerified')?.value" class="btn btn-outline-primary" type="button" id="button-addon2" (click)="getotp()" [disabled]="signupForm.get('mobileno')?.invalid">GET OTP</button>
+                <!-- <span class="mt-0 verified-icon vorder" *ngIf="signupForm.get('otpVerified')?.value"><i class="bi bi-patch-check-fill "></i>
+                </snap> -->
+            </div>
+            <h6 class="mt-0" *ngIf="signupForm.get('otpVerified')?.value">Mobile no. is verified.  <i class="bi bi-patch-check-fill"></i>
+            </h6>
+          </div>
+          <ng-container *ngIf="displayotpFlag">
+            <div class="input-group mb-3" >
+              <label for="id4" class="form-label">OTP :</label>
+              <input type="text" class="form-control" id="id4" [maxLength]="4" (input)="changeotp($event)">
+              <button *ngIf="displayVerifyFlag" class="btn btn-outline-primary" type="button" id="button-addon2" (click)="verifyotp()" >VERIFY OTP</button>
+            </div>
+            <h6>Time Remaining : {{otpCounter}} seconds</h6>
+          </ng-container>
+          <div class="mb-3">
+            <label for="id2" class="form-label">Password : </label>
+            <input type="password" class="form-control" id="id1" formControlName="password">
+          </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-primary" type="submit" >SIGNUP</button>
+            <button class="btn btn-primary" type="button" (click)="navigateTologin()">LOGIN</button>
+        </div>
+    </form>
+</div>

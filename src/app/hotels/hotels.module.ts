@@ -6,17 +6,23 @@ import { HotelsComponent } from './hotels.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule } from '@angular/forms';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
+import { HotelFilterComponent } from './hotel-filter/hotel-filter.component';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 @NgModule({
   declarations: [
     HotelsComponent,
-    HotelListComponent
+    HotelListComponent,
+    HotelFilterComponent,
+    HotelDetailsComponent
   ],
   imports: [
     CommonModule,
     HotelsRoutingModule,
     BsDatepickerModule.forRoot(),
+    CarouselModule.forRoot(),
     FormsModule
   ]
 })
